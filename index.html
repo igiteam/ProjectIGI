@@ -62,6 +62,26 @@
       -webkit-tap-highlight-color: transparent
     }
 
+
+    body,
+    body * {
+      user-select: none !important;
+      cursor: url("images/cursor.png"), default !important;
+    }
+
+    body {
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+      cursor: url("images/cursor.png"), default !important;
+    }
+
+    a,
+    img {
+      cursor: url("images/crosshair.png"), default !important;
+    }
+
     .logo {
       position: fixed;
       left: 0px;
@@ -306,7 +326,9 @@
     </button>
     <input type="file" id="file-input" multiple>
   </div>
+  <!-- Quake3-engine-js -->
   <script src="Quake3.min.js"></script>
+  <!-- Quake3-engine-js-run-game -->
   <script>
     var container = document.getElementById("container")
     var gameWrapper = document.getElementById("game")
@@ -500,7 +522,7 @@
       const randomNumber = Math.floor(Math.random() * 6) + 1; // Random number between 1 and 6
       bulletHole.src = `images/bullethole${randomNumber}.png`; // Set the random bullet hole image
       bulletHole.classList.add('bullet-hole');
-
+      bulletHole.style.zIndex = 1000
       // Position the hole at the click or touch location (adjusted for centering the bullet hole)
       bulletHole.style.left = `${x - size / 2 + 13}px`; // Adjust position to center the bullet hole
       bulletHole.style.top = `${y - size / 2 + 13}px`; // Adjust position to center the bullet hole
