@@ -417,6 +417,111 @@
       }
     })
   </script>
+  <script>
+    // Load audio files
+    const dragunovSound = new Audio('audio/dragunov.aac');
+    const mp5OneSound = new Audio('audio/mp5one.aac');
+    const mp5BurstSound = new Audio('audio/mp5burst.aac');
+
+    // Initialize control flags
+    let bulletOnMouseMove = false;
+    let preventClick = false; // Flag to prevent click events after a hold
+
+    // Add event listener for click events
+    document.addEventListener('click', (e) => {
+      if (preventClick) {
+        preventClick = false; // Reset the flag for subsequent clicks
+        return; // Prevent click event after a hold action
+      }
+
+      if ((e.target.tagName === 'A') || (e.target.tagName === 'IMG')) {
+        // Play Dragunov sound when clicking on <a> or <img> elements
+        dragunovSound.currentTime = 0;
+        dragunovSound.play();
+      } else {
+        // Play MP5 single shot sound for any other click
+        mp5OneSound.currentTime = 0;
+        mp5OneSound.play();
+      }
+
+      // Add bullet hole effect on regular click
+      addBulletHoleOnClick(e.clientX, e.clientY, 30);
+    });
+
+    // Variables for hold functionality
+    let holdTimer;
+    let holdInterval; // Variable to keep the interval of bullet holes during the hold
+    const holdEffect = document.querySelector('.hold-effect');
+
+    document.addEventListener('mousedown', (e) => {
+      e.preventDefault(); // Prevent default action when holding
+
+      // Start a timer to detect a hold
+      holdTimer = setTimeout(() => {
+        preventClick = true; // Prevent the subsequent click event
+        bulletOnMouseMove = true; // Enable bullet holes on mouse movement
+
+        // Play MP5 burst sound and show effect
+        mp5BurstSound.currentTime = 0;
+        mp5BurstSound.play();
+        holdEffect.classList.add('active'); // Show the dark overlay during burst
+      }, 500); // Trigger hold action after 500ms
+    });
+
+    document.addEventListener('mouseup', () => {
+      clearTimeout(holdTimer); // Cancel the hold timer
+      holdEffect.classList.remove('active'); // Hide the dark overlay
+      bulletOnMouseMove = false; // Disable bullet holes on mouse move
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (bulletOnMouseMove) {
+        addBulletHole(e.clientX, e.clientY, 30); // Add bullet holes dynamically at the current mouse position
+      }
+    });
+
+    // Function to add the bullet hole effect with x, y, and size parameters
+    function addBulletHole(x, y, size) {
+      // Only add bullet holes if the flag is true (i.e., mouse is being held for a burst)
+      if (!bulletOnMouseMove) return;
+
+      createBulletHole(x, y, size);
+    }
+
+    function addBulletHoleOnClick(x, y, size) {
+      if (bulletOnMouseMove) return; // Avoid overlap with hold action
+      createBulletHole(x, y, size);
+    }
+
+    // Core function to create bullet holes
+    function createBulletHole(x, y, size) {
+      // Create an image element for the bullet hole
+      const bulletHole = document.createElement('img');
+      const randomNumber = Math.floor(Math.random() * 6) + 1; // Random number between 1 and 6
+      bulletHole.src = `images/bullethole${randomNumber}.png`; // Set the random bullet hole image
+      bulletHole.classList.add('bullet-hole');
+
+      // Position the hole at the click or touch location (adjusted for centering the bullet hole)
+      bulletHole.style.left = `${x - size / 2 + 13}px`; // Adjust position to center the bullet hole
+      bulletHole.style.top = `${y - size / 2 + 13}px`; // Adjust position to center the bullet hole
+
+      // Set the size of the bullet hole and ensure it fits (scale the image)
+      bulletHole.style.width = `${size}px`;
+      bulletHole.style.height = `${size}px`;
+      bulletHole.style.objectFit = 'contain'; // Ensures the image fits within the specified size, maintaining aspect ratio
+
+      // Append the bullet hole to the body
+      document.body.appendChild(bulletHole);
+
+      // Remove the bullet hole after 1 second (fade out effect)
+      setTimeout(() => {
+        bulletHole.style.opacity = 0;
+        setTimeout(() => {
+          bulletHole.remove(); // Remove it from the DOM after the fade effect
+        }, 1000);
+      }, 100);
+    }
+  </script>
 </body>
 
 </html>
