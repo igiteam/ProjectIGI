@@ -476,7 +476,6 @@
   <script>
     // Load audio files
     const dragunovSound = new Audio('audio/dragunov.aac');
-    const mp5OneSound = new Audio('audio/mp5one.aac');
     const mp5BurstSound = new Audio('audio/mp5burst.aac');
 
     // Initialize control flags
@@ -491,17 +490,8 @@
       }
       if (container.style.display == "none") { return }
 
-      if ((e.target.tagName === 'A') || (e.target.tagName === 'IMG')) {
-        // Play Dragunov sound when clicking on <a> or <img> elements
-        dragunovSound.currentTime = 0;
-        dragunovSound.play();
-      } else {
-        // Play MP5 single shot sound for any other click
-        // mp5OneSound.currentTime = 0;
-        // mp5OneSound.play();
-        dragunovSound.currentTime = 0;
-        dragunovSound.play();
-      }
+      dragunovSound.currentTime = 0;
+      dragunovSound.play();
 
       // Add bullet hole effect on regular click
       addBulletHoleOnClick(e.clientX, e.clientY, 30);
