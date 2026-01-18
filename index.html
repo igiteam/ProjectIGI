@@ -343,6 +343,9 @@
         <button id="controller-btn" class="os-btn" style="background: transparent; border: none; padding: 0;">
           <img src="images/controller-js.png" alt="controller-js" style="width: 32px; height: 32px;">
         </button>
+        <button id="touchpad-btn" class="os-btn" style="background: transparent; border: none; padding: 0;">
+          <img src="images/touchpad.png" alt="touchpad-js" style="width: 32px; height: 32px;">
+        </button>
       </div>
       <div id="tech-buttons" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 10000;">
         <button id="q3-btn" class="tech-btn"
@@ -654,6 +657,7 @@
           { id: 'macos-btn', name: 'macOS' },
           { id: 'windows-btn', name: 'Windows' },
           { id: 'controller-btn', name: 'Controller' },
+          { id: 'touchpad-btn', name: 'Touchpad' },
           { id: 'q3-btn', name: 'Quake3' },
           { id: 'js-btn', name: 'JavaScript' }
         ];
@@ -671,6 +675,8 @@
               } else if (button.name == "Windows") {
                 // Add Windows related URL
               } else if (button.name == "Controller") {
+                // Add Windows related URL
+              } else if (button.name == "Touchpad") {
                 // Add Windows related URL
               } else if (button.name == "Quake3") {
                 url = 'https://github.com/inolen/quakejs';
