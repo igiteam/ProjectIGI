@@ -84,10 +84,11 @@
       cursor: url("https://raw.githubusercontent.com/ProjectIGIRemakeTeam/ProjectIGI/refs/heads/master/images/crosshair.png"), default !important;
       border: 1px solid black !important;
       /* Force remove all borders on all browsers */
-      border: 0 !important;
       outline: 0 !important;
-      /* Safari specific */
-      -webkit-appearance: none;
+    }
+
+    .logo[src=""] {
+      content: "";
     }
 
     /* Make sure bullet holes don't interfere with cursor */
