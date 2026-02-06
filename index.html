@@ -373,6 +373,11 @@
     var pleaseWait = document.querySelector(".pleasewait")
 
     window.addEventListener("load", function () {
+      console.log("Window loaded, checking iframe status...");
+      console.log("window.top == window.self:", window.top == window.self);
+      console.log("pleaseWait element:", pleaseWait);
+      console.log("container element:", container);
+
       if (window.top == window.self || true) {
         pleaseWait.style.display = "none"
         container.style.display = "block"
