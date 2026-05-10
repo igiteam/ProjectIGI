@@ -346,6 +346,10 @@
         </button>
       </div>
       <div id="tech-buttons" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 10000;">
+        <button id="igi2-btn" class="tech-btn"
+          style="background: transparent; border: none; padding: 0; margin-right: 10px;">
+          <img src="https://cdn.gitgpt.chat/rtx/images/mohaa-icon.png" alt="Igi 2" style="width: 32px; height: 32px;">
+        </button>
         <button id="q3-btn" class="tech-btn"
           style="background: transparent; border: none; padding: 0; margin-right: 10px;">
           <img src="images/q3.png" alt="Quake 3" style="width: 32px; height: 32px;">
@@ -661,6 +665,7 @@
           { id: 'windows-btn', name: 'Windows' },
           { id: 'controller-btn', name: 'Controller' },
           { id: 'touchpad-btn', name: 'Touchpad' },
+          { id: 'igi2-btn', name: 'Igi2' },
           { id: 'q3-btn', name: 'Quake3' },
           { id: 'js-btn', name: 'JavaScript' }
         ];
@@ -681,7 +686,10 @@
                 // Add Windows related URL
               } else if (button.name == "Touchpad") {
                 // Add Windows related URL
-              } else if (button.name == "Quake3") {
+              } else if (button.name == "Igi2") {
+                url = 'https://igi2-mohradiant.netlify.app/';
+              }
+              else if (button.name == "Quake3") {
                 url = 'https://github.com/inolen/quakejs';
               } else if (button.name == "JavaScript") {
                 url = 'https://en.wikipedia.org/wiki/ECMAScript';
