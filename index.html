@@ -358,6 +358,11 @@
         </button>
       </div>
       <div id="tech-buttons" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 10000;">
+        <button id="github-btn" class="tech-btn"
+          style="background: transparent; border: none; padding: 0; margin-right: 10px;">
+          <img src="https://cdn.gitgpt.chat/rtx/images/github-logo-white.png" alt="Igi 2"
+            style="width: 32px; height: 32px;">
+        </button>
         <button id="igi2-btn" class="tech-btn"
           style="background: transparent; border: none; padding: 0; margin-right: 10px;">
           <img src="https://cdn.gitgpt.chat/rtx/images/mohaa-icon.png" alt="Igi 2" style="width: 32px; height: 32px;">
@@ -369,6 +374,7 @@
         <button id="js-btn" class="tech-btn" style="background: transparent; border: none; padding: 0;">
           <img src="images/js.png" alt="JavaScript" style="width: 32px; height: 32px;">
         </button>
+
       </div>
     </div>
   </div>
@@ -678,6 +684,7 @@
           { id: 'controller-btn', name: 'Controller' },
           { id: 'touchpad-btn', name: 'Touchpad' },
           { id: 'igi2-btn', name: 'Igi2' },
+          { id: 'github-btn', name: 'Github' },
           { id: 'q3-btn', name: 'Quake3' },
           { id: 'js-btn', name: 'JavaScript' }
         ];
@@ -700,6 +707,8 @@
                 // Add Windows related URL
               } else if (button.name == "Igi2") {
                 url = 'https://igi2-mohradiant.netlify.app/';
+              } else if (button.name == "Github") {
+                url = 'https://github.com/igiteam/ProjectIGI';
               }
               else if (button.name == "Quake3") {
                 url = 'https://github.com/inolen/quakejs';
